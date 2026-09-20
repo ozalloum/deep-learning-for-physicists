@@ -1,0 +1,33 @@
+name: Purge manuscript PDF history
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out complete history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Remove manuscript PDF and temporary workflow from all commits
+        shell: bash
+        env:
+          FILTER_BRANCH_SQUELCH_WARNING: "1"
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch -- Deep_Learning_for_Physicists_Manuscript.pdf .github/workflows/purge-manuscript-history.yml' --prune-empty --tag-name-filter cat -- --all
+          git reflog expire --expire=now --all
+          git gc --prune=now --aggressive
+          if git rev-list --objects --all | grep -F -- "Deep_Learning_for_Physicists_Manuscript.pdf"; then
+            echo "The manuscript PDF is still reachable in rewritten history."
+            exit 1
+          fi
+          git push origin --force main
