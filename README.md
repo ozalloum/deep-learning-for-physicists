@@ -1,16 +1,16 @@
 # Deep Learning for Physicists
 
-Reproducible materials for a physics-education review prepared for the *European Journal of Physics* (IOP Publishing).
+Journal-neutral reproducibility materials for a physics-education study of function approximation, scientific generalization, and physically meaningful validation.
 
-The project uses a simple pendulum as a teaching example for regime changes: bounded oscillation below the energy separatrix and continuous rotation above it. The materials connect the physical picture to supervised learning, held-out evaluation, and inverse identification.
+The project uses a damped oscillator and a simple pendulum as transparent teaching examples. The pendulum demonstrates the transition from bounded oscillation below the energy separatrix to continuous rotation above it.
+
+This repository contains reproducibility materials only. It does not include the manuscript or journal-specific submission files, so it can accompany submissions to different journals.
 
 ## Contents
 
-- `Deep_Learning_for_Physicists_Manuscript.pdf` — the formatted manuscript.
 - `Deep_Learning_for_Physicists_Jupyter_Notebook.ipynb` — a platform-neutral Jupyter notebook for the demonstrations.
-- `Deep_Learning_for_Physicists_Reproducibility.zip` — the complete source, code, data, figures, and notebook package.
+- `Deep_Learning_for_Physicists_Reproducibility_Package.zip` — the code, released data, model state files, figures, requirements, and notebook package.
 
 ## Reproduction
 
-Download and unpack the ZIP archive, install the packages listed in `requirements.txt`, and open the notebook with Jupyter. The archive contains the revised pendulum Figure 5 assets and the source needed to rebuild the manuscript.
-
+Download and unpack the ZIP archive, install the packages listed in `requirements.txt`, and open the notebook with Jupyter. The archive contains the revised pendulum regime-shift figures and the materials needed to reproduce the numerical demonstrations.
